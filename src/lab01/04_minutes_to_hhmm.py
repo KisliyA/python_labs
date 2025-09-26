@@ -1,2 +1,2 @@
-m = int(input('Минуты:'))
-print(f'{m // 60}:{m % 60}')
+m = int(input("Минуты: "))
+print(str(m//60) + ":" + f"{(m%60):02d}")
