@@ -25,6 +25,3 @@ print("Топ-5:")
 for key, value in top5:
     print(f"{key}:{value}")
 
-
-
-    
