@@ -11,16 +11,10 @@ def main():
     
     with open(input_file, 'r', encoding='utf-8') as f:
         text = f.read()
-    
-    # Нормализуем текст (приводим к нижнему регистру)
     normalized_text = normalize(text)
-    
-    # Выводим нормализованный текст
     print(normalized_text)
-    
-    # Токенизируем и считаем слова
+
     words = tokenize(normalized_text)
-    
     word_count = {}
     for word in words:
         word_count[word] = word_count.get(word, 0) + 1
