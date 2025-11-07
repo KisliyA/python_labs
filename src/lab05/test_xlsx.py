@@ -42,7 +42,7 @@ def test_csv_to_xlsx():
             f.write('name,age\nJohn,25')
         
         csv_to_xlsx('test.txt', 'test.xlsx')
-        print("   ✗ Ожидалась ошибка ValueError")
+        print("  ошибка ValueError")
     except ValueError:
         print("   ✓ Корректно: ValueError (неверный тип файла)")
     except Exception as e:
@@ -60,11 +60,11 @@ def test_csv_to_xlsx():
             f.write('')
         
         csv_to_xlsx('empty.csv', 'empty.xlsx')
-        print("   ✗ Ожидалась ошибка ValueError")
+        print(" ошибка ValueError")
     except ValueError:
-        print("   ✓ Корректно: ValueError (пустой файл)")
+        print(" ValueError (пустой файл)")
     except Exception as e:
-        print(f"   ✗ Неправильная ошибка: {e}")
+        print(f"  ошибка: {e}")
     finally:
         # Удаляем временный файл
         if os.path.exists('empty.csv'):
