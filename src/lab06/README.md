@@ -108,7 +108,7 @@ def main():
         case 'json2csv':
             json_to_csv(args.input, args.output)
         case 'csv2json':
-            csv_to_json(args.input, args.output)
+            csv_to_json(args.input, args.output)f
         case 'csv2xlsx':
             csv_to_xlsx(args.input, args.output)
     print('work')
