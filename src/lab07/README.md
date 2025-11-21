@@ -71,7 +71,7 @@ def test_count_freq(tokens, expected):
 def test_top_n(freq, n, expected):
     assert top_n(freq, n) == expected
 ```
-![exe1!](/images/lab07/task2.png)
+![exe1!](/images/lab07/task1.png)
 -------------------------------------------
 **Задание №2:**
 ```python
