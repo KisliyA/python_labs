@@ -4,7 +4,7 @@ import os
 
 samples_dir = r'.\data\samples'
 
-print("=== Тест с абсолютными путями ===")
+print("=== Тест ===")
 
 # Тест 1: cities.csv
 try:

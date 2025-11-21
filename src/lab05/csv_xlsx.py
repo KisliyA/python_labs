@@ -11,7 +11,6 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
     Колонки — автоширина по длине текста (не менее 8 символов).
     """
     try:
-        # Проверка файла
         if not Path(csv_path).exists():
             raise FileNotFoundError(f"Файл не найден: {csv_path}")
         
@@ -23,7 +22,6 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
         if not rows:
             raise ValueError("CSV файл пуст")
         
-        # Создание XLSX с openpyxl
         try:
             from openpyxl import Workbook
             from openpyxl.utils import get_column_letter
@@ -39,7 +37,7 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
             for col_idx, value in enumerate(row, 1):
                 ws.cell(row=row_idx, column=col_idx, value=value)
         
-        # Автоширина колонок
+        # колонki автоширина
         for col in ws.columns:
             max_length = 0
             col_letter = get_column_letter(col[0].column)

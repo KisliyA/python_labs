@@ -8,7 +8,7 @@ from pathlib import Path
 import json, csv
 
 def json_to_csv(json_path: str, csv_path: str) -> None:
-    '''Функция конвертирует JSON-файл в CSV-файл'''
+    '''JSON-CSV'''
     j_path = Path(json_path)
 
     if not j_path.exists():
@@ -44,7 +44,7 @@ def json_to_csv(json_path: str, csv_path: str) -> None:
             c_writer.writerow(complete_row)
 
 def csv_to_json(csv_path: str, json_path: str) -> None:
-    '''Функция конвертирует CSV-файл в JSON-файл'''
+    ''' CSV-JSON-'''
     c_path = Path(csv_path)
 
     if not c_path.exists():
@@ -71,6 +71,7 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
 **Задание №2:**
 ```python
 # src/lab05/csv_xlsx.py
+i# src/lab05/csv_xlsx.py
 import csv
 from pathlib import Path
 
@@ -83,7 +84,6 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
     Колонки — автоширина по длине текста (не менее 8 символов).
     """
     try:
-        # Проверка файла
         if not Path(csv_path).exists():
             raise FileNotFoundError(f"Файл не найден: {csv_path}")
         
@@ -95,7 +95,6 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
         if not rows:
             raise ValueError("CSV файл пуст")
         
-        # Создание XLSX с openpyxl
         try:
             from openpyxl import Workbook
             from openpyxl.utils import get_column_letter
@@ -111,7 +110,7 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
             for col_idx, value in enumerate(row, 1):
                 ws.cell(row=row_idx, column=col_idx, value=value)
         
-        # Автоширина колонок
+        # колонki автоширина
         for col in ws.columns:
             max_length = 0
             col_letter = get_column_letter(col[0].column)
@@ -136,6 +135,6 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
             raise e
         raise ValueError(f"Ошибка конвертации: {e}")
 ```
-![exe2!](/images/lab05/csv_xlsx.png)
+![exe2!](/images/lab05/csv_xlsx.png) ![exe2!](/images/lab05/csv_xlsx1.png)
 -------------------------------------------
 

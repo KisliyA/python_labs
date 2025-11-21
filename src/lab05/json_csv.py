@@ -2,7 +2,7 @@ from pathlib import Path
 import json, csv
 
 def json_to_csv(json_path: str, csv_path: str) -> None:
-    '''Функция конвертирует JSON-файл в CSV-файл'''
+    '''JSON-CSV'''
     j_path = Path(json_path)
 
     if not j_path.exists():
@@ -23,7 +23,7 @@ def json_to_csv(json_path: str, csv_path: str) -> None:
         if not all(isinstance(row, dict) for row in j_data):
             raise ValueError('Файл не является списком СЛОВАРЕЙ')
     
-    # Все ключи в алфавитном порядке + заполнение пустых полей
+    # Все ключи в алфавитном порядке и заполнение пустых полей
     all_fields = sorted(set(key for item in j_data for key in item.keys()))
     
     c_path = Path(csv_path)
@@ -38,7 +38,7 @@ def json_to_csv(json_path: str, csv_path: str) -> None:
             c_writer.writerow(complete_row)
 
 def csv_to_json(csv_path: str, json_path: str) -> None:
-    '''Функция конвертирует CSV-файл в JSON-файл'''
+    ''' CSV-JSON-'''
     c_path = Path(csv_path)
 
     if not c_path.exists():
