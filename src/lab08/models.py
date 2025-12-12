@@ -1,5 +1,6 @@
 from datetime import datetime, date
 from dataclasses import dataclass
+
 @dataclass
 class Student:
     fio: str
@@ -8,13 +9,17 @@ class Student:
     gpa: float
 
     def __post_init__(self):
-        #  Валидация birthdate
+        # 1. Преобразуем GPA в float если это строка
+        if isinstance(self.gpa, str):
+            self.gpa = float(self.gpa)
+        
+        # 2. Валидация birthdate
         try:
             datetime.strptime(self.birthdate, "%Y-%m-%d")
         except ValueError:
             raise ValueError(f"Неверный формат даты: {self.birthdate}. Ожидается YYYY-MM-DD")
 
-        #  Валидация GPA
+        # 3. Валидация GPA
         if not (0 <= self.gpa <= 5):
             raise ValueError(f"GPA должен быть в диапазоне 0..5, получено: {self.gpa}")
 
@@ -26,6 +31,7 @@ class Student:
         if (today.month, today.day) < (birth.month, birth.day):
             years -= 1
         return years
+    
     # Сериализация
     def to_dict(self) -> dict:
         return {
@@ -35,16 +41,19 @@ class Student:
             "gpa": self.gpa
         }
 
-
     # Десериализация
-
     @classmethod
     def from_dict(cls, d: dict):
+        # Преобразуем GPA при создании из словаря
+        gpa = d["gpa"]
+        if isinstance(gpa, str):
+            gpa = float(gpa)
+            
         return cls(
             fio=d["fio"],
             birthdate=d["birthdate"],
             group=d["group"],
-            gpa=d["gpa"]
+            gpa=gpa
         )
 
     def __str__(self):
