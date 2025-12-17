@@ -114,7 +114,7 @@ if __name__=="__main__":
     print("len:", len(l))
     print("repr:", repr(l))
 ```
-![exe1!](/images/lab10/A.png)
+![exe1!](/images/lab10/B.png)
 -------------------------------------------
 **Models:**
 ```python
@@ -203,5 +203,5 @@ if __name__=="__main__":
     print("Is empty:", q.is_empty())  # False
     print()
 ```
-![exe1!](/images/lab10/B.png)
+![exe1!](/images/lab10/A.png)
 -------------------------------------------
